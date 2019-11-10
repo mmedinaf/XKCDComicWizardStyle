@@ -10,15 +10,19 @@ namespace XKCDComicWizardStyle.Controllers
 {
     public class APIClient
     {
+        private const string BaseDomain = "https://xkcd.com/";
+        private const string BaseJson = "info.0.json";
+
         public Comic GetComic(int indiceComic)
         {
             var cadena = "";
             using (WebClient cliente = new WebClient())
             {
-                string ruta = "";
-                
-                if(indiceComic == 0)
-                    ruta = "https://xkcd.com/info.0.json";
+                string ruta = BaseDomain;
+                if (indiceComic < 1)
+                    ruta += BaseJson;
+                else
+                    ruta += "/" + indiceComic + "/" + BaseJson;
 
                 try
                 {

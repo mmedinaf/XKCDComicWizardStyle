@@ -17,7 +17,10 @@ namespace XKCDComicWizardStyle.Controllers
             if (cliente == null)
                 cliente = new APIClient();
 
-            Comic comicDelDia = cliente.GetComic(0);
+            int indiceComic = 0;
+            if (id.HasValue)
+                indiceComic = id.Value;
+            Comic comicDelDia = cliente.GetComic(indiceComic);
             ViewBag.Position = comicDelDia;
 
             return View();
