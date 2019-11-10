@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Comic comic = ViewBag.Position;
+}
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card mb-4 shadow-sm">
+                @if (!string.IsNullOrEmpty(comic.Img))
+                {
+                    <img src="@comic.Img" width="100%" height="325" />
+                }
+
+                <div class="card-body">
+                    <p class="card-text">@comic.Alt</p>
+                </div>
+            </div>
+        </div>
+    </div>
