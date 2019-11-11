@@ -11,24 +11,24 @@ namespace XKCDComicWizardStyle.Controllers
 {
     public class HomeController : Controller
     {
-        private APIClient cliente;
+        private APIClient client;
         private int lastNum;
         public IActionResult Index(int? id, bool? previous)
         {
-            if (cliente == null)
-                cliente = new APIClient();
+            if (client == null)
+                client = new APIClient();
 
             int comicIndex = 0;
             // Define last comic with most recent comic's number
             if (lastNum < 1)
             {
-                lastNum = cliente.GetComic(0).Num;
+                lastNum = client.GetComic(0).Num;
                 ViewBag.Settings = lastNum;
             }
             
             if (id.HasValue)
                 comicIndex = id.Value;
-            Comic returnedComic = cliente.GetComic(comicIndex);
+            Comic returnedComic = client.GetComic(comicIndex);
             ViewBag.Position = returnedComic;
             if (!id.HasValue)
                 comicIndex = returnedComic.Num;
