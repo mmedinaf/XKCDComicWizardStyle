@@ -13,30 +13,43 @@ namespace XKCDComicWizardStyle.Controllers
         private const string BaseDomain = "https://xkcd.com/";
         private const string BaseJson = "info.0.json";
 
-        public Comic GetComic(int indiceComic)
+        public Comic GetComic(int comicIndex)
         {
-            string cadena = "";
+            int infinityValidation = 0;
+            string stringJSON = "";
             using (WebClient cliente = new WebClient())
             {
-                string ruta = BaseDomain;
-                if (indiceComic < 1)
-                    ruta += BaseJson;
-                else
-                    ruta += "/" + indiceComic + "/" + BaseJson;
-
-                try
+                bool validComic = true;
+                do
                 {
-                    cadena = cliente.DownloadString(ruta);
-                }
-                catch (WebException ex)
-                {
-                    throw ex;
-                }
-                    
+                    string link = comicIndex == 0 ?
+                    //Setting initial link [https://xkcd.com/info.0.json]
+                    $"{BaseDomain}{BaseJson}" :
+                    //Setting a given comic [https://xkcd.com/404/info.0.json]
+                    $"{BaseDomain}/{comicIndex}/{BaseJson}";
+                    // Searching a valid comic
+                    try
+                    {
+                        stringJSON = cliente.DownloadString(link);
+                        validComic = true;
+                    }
+                    catch (WebException)
+                    {
+                        validComic = false;
+                        comicIndex++;
+                        infinityValidation++;
+                    }
+                    // Avoiding out of bound
+                    if (infinityValidation >= 4)
+                    {
+                        comicIndex = 1;
+                    }
+                } while (!validComic);
             }
 
-            if (cadena.Length > 0)
-                return JsonConvert.DeserializeObject<Comic>(cadena);
+            //Getting the valid comic
+            if (stringJSON.Length > 0)
+                return JsonConvert.DeserializeObject<Comic>(stringJSON);
             return new Comic();
         }
     }

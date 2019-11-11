@@ -13,23 +13,35 @@ namespace XKCDComicWizardStyle.Controllers
     {
         private APIClient cliente;
         private int lastNum;
-        public IActionResult Index(int? id)
+        public IActionResult Index(int? id, bool? previous)
         {
             if (cliente == null)
                 cliente = new APIClient();
 
+            int comicIndex = 0;
             // Define last comic with most recent comic's number
             if (lastNum < 1)
             {
                 lastNum = cliente.GetComic(0).Num;
                 ViewBag.Settings = lastNum;
             }
-
-            int indiceComic = 0;
+            
             if (id.HasValue)
-                indiceComic = id.Value;
-            Comic comicObtenido = cliente.GetComic(indiceComic);
-            ViewBag.Position = comicObtenido;
+                comicIndex = id.Value;
+            Comic returnedComic = cliente.GetComic(comicIndex);
+            ViewBag.Position = returnedComic;
+            if (!id.HasValue)
+                comicIndex = returnedComic.Num;
+
+            //indexResult will be null in case of returning an empty comic
+            var indexResult = ((Comic)ViewBag.Position).Num;
+            //In case of a null Index Result, go to the previos comic until getting a valid comic
+            if (indexResult != comicIndex)
+            {
+                //Setting the index for previous comic
+                indexResult = (previous ?? false ? comicIndex - 1 : indexResult);
+                return Redirect("/Home/Index/" + indexResult);
+            }
 
             return View();
         }
