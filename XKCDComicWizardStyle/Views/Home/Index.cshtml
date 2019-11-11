@@ -1,6 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
     Comic comic = ViewBag.Position;
+    int numActual = comic.Num;
+    int numMax = ViewBag.Settings;
 }
 
 <div class="row">
@@ -11,8 +13,22 @@
                 <img src="@comic.Img" width="100%" height="325" />
             }
 
-            <div class="card-body">
-                <p class="card-text">@comic.Alt</p>
+        <div class="card-body">
+            <p class="card-text">@comic.Alt</p>
+            
+                @if (numMax == numActual)
+                {
+                    <p>You're at most recent comic, there isn't a next comic</p>
+                }
+        
+        </div>
+            <div>
+                <div>
+                    @{
+                        <a asp-controller="Home" asp-action="Index" asp-route-id="@(numActual+1)">Next</a>
+                    }
+                </div>
+                <small>@comic.Title</small>
             </div>
         </div>
     </div>

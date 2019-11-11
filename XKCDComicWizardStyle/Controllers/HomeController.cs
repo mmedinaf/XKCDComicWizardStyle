@@ -12,16 +12,24 @@ namespace XKCDComicWizardStyle.Controllers
     public class HomeController : Controller
     {
         private APIClient cliente;
+        private int lastNum;
         public IActionResult Index(int? id)
         {
             if (cliente == null)
                 cliente = new APIClient();
 
+            // Define last comic with most recent comic's number
+            if (lastNum < 1)
+            {
+                lastNum = cliente.GetComic(0).Num;
+                ViewBag.Settings = lastNum;
+            }
+
             int indiceComic = 0;
             if (id.HasValue)
                 indiceComic = id.Value;
-            Comic comicDelDia = cliente.GetComic(indiceComic);
-            ViewBag.Position = comicDelDia;
+            Comic comicObtenido = cliente.GetComic(indiceComic);
+            ViewBag.Position = comicObtenido;
 
             return View();
         }

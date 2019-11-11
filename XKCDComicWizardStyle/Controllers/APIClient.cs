@@ -15,7 +15,7 @@ namespace XKCDComicWizardStyle.Controllers
 
         public Comic GetComic(int indiceComic)
         {
-            var cadena = "";
+            string cadena = "";
             using (WebClient cliente = new WebClient())
             {
                 string ruta = BaseDomain;
