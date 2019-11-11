@@ -12,7 +12,6 @@ C:\Users\Martin\source\repos\XKCDComicWizardStyle\XKCDComicWizardStyle\obj\Debug
 C:\Users\Martin\source\repos\XKCDComicWizardStyle\XKCDComicWizardStyle\obj\Debug\netcoreapp3.0\XKCDComicWizardStyle.TagHelpers.input.cache
 C:\Users\Martin\source\repos\XKCDComicWizardStyle\XKCDComicWizardStyle\obj\Debug\netcoreapp3.0\XKCDComicWizardStyle.TagHelpers.output.cache
 C:\Users\Martin\source\repos\XKCDComicWizardStyle\XKCDComicWizardStyle\obj\Debug\netcoreapp3.0\XKCDComicWizardStyle.RazorCoreGenerate.cache
-C:\Users\Martin\source\repos\XKCDComicWizardStyle\XKCDComicWizardStyle\obj\Debug\netcoreapp3.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Martin\source\repos\XKCDComicWizardStyle\XKCDComicWizardStyle\obj\Debug\netcoreapp3.0\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Martin\source\repos\XKCDComicWizardStyle\XKCDComicWizardStyle\obj\Debug\netcoreapp3.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\Martin\source\repos\XKCDComicWizardStyle\XKCDComicWizardStyle\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -34,3 +33,4 @@ C:\Users\Martin\source\repos\XKCDComicWizardStyle\XKCDComicWizardStyle\obj\Debug
 C:\Users\Martin\source\repos\XKCDComicWizardStyle\XKCDComicWizardStyle\obj\Debug\netcoreapp3.0\XKCDComicWizardStyle.csproj.CopyComplete
 C:\Users\Martin\source\repos\XKCDComicWizardStyle\XKCDComicWizardStyle\obj\Debug\netcoreapp3.0\XKCDComicWizardStyle.dll
 C:\Users\Martin\source\repos\XKCDComicWizardStyle\XKCDComicWizardStyle\obj\Debug\netcoreapp3.0\XKCDComicWizardStyle.pdb
+C:\Users\Martin\source\repos\XKCDComicWizardStyle\XKCDComicWizardStyle\obj\Debug\netcoreapp3.0\Razor\Views\Home\Comic.cshtml.g.cs

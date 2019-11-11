@@ -13,7 +13,10 @@ namespace XKCDComicWizardStyle.Controllers
     {
         private APIClient client;
         private int lastNum;
-        public IActionResult Index(int? id, bool? previous)
+
+        [Route("/")]
+        [HttpGet("/comic/{id?}")]
+        public IActionResult Comic(int? id, bool? previous)
         {
             if (client == null)
                 client = new APIClient();
@@ -25,7 +28,7 @@ namespace XKCDComicWizardStyle.Controllers
                 lastNum = client.GetComic(0).Num;
                 ViewBag.Settings = lastNum;
             }
-            
+
             if (id.HasValue)
                 comicIndex = id.Value;
             Comic returnedComic = client.GetComic(comicIndex);
@@ -40,10 +43,10 @@ namespace XKCDComicWizardStyle.Controllers
             {
                 //Setting the index for previous comic
                 indexResult = (previous ?? false ? comicIndex - 1 : indexResult);
-                return Redirect("/Home/Index/" + indexResult);
+                return Redirect("/comic/" + indexResult);
             }
 
-            return View();
+            return View("Comic");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

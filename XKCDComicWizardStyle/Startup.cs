@@ -46,6 +46,8 @@ namespace XKCDComicWizardStyle
 
             app.UseAuthorization();
 
+
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
