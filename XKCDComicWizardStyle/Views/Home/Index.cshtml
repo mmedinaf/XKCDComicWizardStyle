@@ -25,6 +25,7 @@
             <div>
                 <div>
                     @{
+                        <a asp-controller="Home" asp-action="Index" asp-route-id="@(numActual-1)" asp-route-preview="true">Preview</a>
                         <a asp-controller="Home" asp-action="Index" asp-route-id="@(numActual+1)">Next</a>
                     }
                 </div>
